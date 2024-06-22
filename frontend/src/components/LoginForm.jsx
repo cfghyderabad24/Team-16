@@ -27,6 +27,7 @@ const LoginForm = () => {
         try {
             const formData = new FormData(event.currentTarget);
             formData.append("role", role); // Add role to form data
+            console.log(formData);
 
             const response = await doCredentialLogin(formData);
 
@@ -96,7 +97,10 @@ const LoginForm = () => {
 
                     <LabelInputContainer className="mb-4">
                         <Label>Role</Label>
-                        <Select onValueChange={(value) => setRole(value)}>
+                        <Select
+                            onValueChange={(value) => setRole(value)}
+                            name="role"
+                        >
                             <SelectTrigger className="w-full">
                                 <SelectValue placeholder="Select your role" />
                             </SelectTrigger>

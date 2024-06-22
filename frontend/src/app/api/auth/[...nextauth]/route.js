@@ -75,6 +75,7 @@ const handler = NextAuth({
                 role: {},
             },
             async authorize(credentials) {
+                console.log(credentials);
                 if (!credentials) return null;
 
                 const { email, password, role } = credentials;
@@ -84,7 +85,9 @@ const handler = NextAuth({
 
                     let user;
                     if (role === "Admin") {
+                        console.log("Admin user");
                         user = await User.findOne({ email });
+                        console.log("User found");
                     } else if (role === "Frontliner") {
                         user = await Frontliner.findOne({ email });
                     } else {

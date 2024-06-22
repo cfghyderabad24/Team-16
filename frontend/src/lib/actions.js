@@ -11,6 +11,7 @@ export async function doCredentialLogin(formData) {
         const response = await signIn("credentials", {
             email: formData.get("email"),
             password: formData.get("password"),
+            role: formData.get("role"),
             redirect: false,
         });
         return response;
