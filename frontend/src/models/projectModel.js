@@ -34,6 +34,10 @@ const projectSchema = new Schema({
     },
     cycles: [
         {
+            alhist:{
+                type: [Date],
+                default: null,
+            },
             cycleMonths: {
                 type: String,
                 required: true,
