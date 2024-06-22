@@ -9,6 +9,11 @@ const frontlinerSchema = new Schema({
         required: true,
         type: String,
     },
+    state: {
+        required: true,
+        type: String,
+    },
+
     email: {
         required: true,
         type: String,
@@ -16,29 +21,33 @@ const frontlinerSchema = new Schema({
     projects: [
         {
             project: {
-                type: mongoose.Schema.Types.ObjectId, ref: "projectModel"
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Project",
             },
             cycles: [
                 {
                     tenure: {
                         type: String,
-
                     },
-                    visitAlerts: [{
-                        type: mongoose.Schema.Types.ObjectId, ref: "alertModel"
-                    }],
+                    visitAlerts: [
+                        {
+                            type: mongoose.Schema.Types.ObjectId,
+                            ref: "Alert",
+                        },
+                    ],
 
-                    uploaded:
-                        [{
-                            type: mongoose.Schema.Types.ObjectId, ref: "alertModel"
-                        }]
-
-
-
-                }
-            ]
-        }
-    ]
+                    uploaded: [
+                        {
+                            type: mongoose.Schema.Types.ObjectId,
+                            ref: "Alert",
+                        },
+                    ],
+                },
+            ],
+        },
+    ],
 });
 
-export const Frontliner = mongoose.models.Frontliner ?? mongoose.model("Frontliner", frontlinerSchema);
+export const Frontliner =
+    mongoose.models.Frontliner ??
+    mongoose.model("Frontliner", frontlinerSchema);

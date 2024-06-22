@@ -1,7 +1,6 @@
 "use client";
 
 import { doCredentialLogin } from "@/lib/actions";
-
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Label } from "./ui/label";
@@ -21,11 +20,13 @@ import {
 const LoginForm = () => {
     const router = useRouter();
     const [error, setError] = useState("");
+    const [role, setRole] = useState("");
 
     async function onSubmit(event) {
         event.preventDefault();
         try {
             const formData = new FormData(event.currentTarget);
+            formData.append("role", role); // Add role to form data
 
             const response = await doCredentialLogin(formData);
 
@@ -33,7 +34,30 @@ const LoginForm = () => {
                 console.error(response.error);
                 setError(response.error.message);
             } else {
-                router.push("/");
+                // Redirect based on role
+                switch (role) {
+                    case "Frontliner":
+                        router.push("/dashboardF");
+                        break;
+                    case "Admin":
+                        router.push("/dashboardA");
+                        break;
+                    case "State Lead":
+                        router.push("/dashboardS");
+                        break;
+                    case "General Manager":
+                        router.push("/dashboardG");
+                        break;
+                    case "Regional Director":
+                        router.push("/dashboardR");
+                        break;
+                    case "Head Office":
+                        router.push("/dashboardH");
+                        break;
+                    default:
+                        router.push("/");
+                        break;
+                }
             }
         } catch (e) {
             console.error(e);
@@ -72,25 +96,28 @@ const LoginForm = () => {
 
                     <LabelInputContainer className="mb-4">
                         <Label>Role</Label>
-                        <Select>
-                            <SelectTrigger className="w-[180px]">
-                                <SelectValue placeholder="Select your value" />
+                        <Select onValueChange={(value) => setRole(value)}>
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Select your role" />
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectGroup>
-                                    <SelectLabel>Fruits</SelectLabel>
-                                    <SelectItem value="apple">Apple</SelectItem>
-                                    <SelectItem value="banana">
-                                        Banana
+                                    <SelectLabel></SelectLabel>
+                                    <SelectItem value="Frontliner">
+                                        Frontliner
                                     </SelectItem>
-                                    <SelectItem value="blueberry">
-                                        Blueberry
+                                    <SelectItem value="Admin">Admin</SelectItem>
+                                    <SelectItem value="State Lead">
+                                        State Lead
                                     </SelectItem>
-                                    <SelectItem value="grapes">
-                                        Grapes
+                                    <SelectItem value="General Manager">
+                                        General Manager
                                     </SelectItem>
-                                    <SelectItem value="pineapple">
-                                        Pineapple
+                                    <SelectItem value="Regional Director">
+                                        Regional Director
+                                    </SelectItem>
+                                    <SelectItem value="Head Office">
+                                        Head Office
                                     </SelectItem>
                                 </SelectGroup>
                             </SelectContent>

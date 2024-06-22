@@ -13,31 +13,52 @@ const higherAuthSchema = new Schema({
         required: true,
         type: String,
     },
+    state: {
+        required: true,
+        type: String,
+    },
+    region: {
+        required: false,
+        type: String,
+    },
+    role: {
+        required: true,
+        type: String,
+    },
+
     projects: [
         {
             project: {
-                type: mongoose.Schema.Types.ObjectId, ref: "projectModel"
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "projectModel",
             },
             cycles: [
                 {
                     tenure: {
                         type: String,
-
                     },
 
-                    visitDate: {
-                        type: Date
+                    approveDate: {
+                        type: Date,
                     },
-                    uploaded:
-                        [{
-                            type: mongoose.Schema.Types.ObjectId, ref: "alertModel"
-                        }]
-
-
-                }
+                    approveAlerts: [
+                        {
+                            type: mongoose.Schema.Types.ObjectId,
+                            ref: "Alert",
+                        },
+                    ],
+                    escalationAlerts: [
+                        {
+                            type: mongoose.Schema.Types.ObjectId,
+                            ref: "Alert",
+                        },
+                    ],
+                },
             ],
-        }
-    ]
+        },
+    ],
 });
 
-export const higherAuth = mongoose.models.higherAuth ?? mongoose.model("higherAuth", higherAuthSchema);
+export const higherAuth =
+    mongoose.models.higherAuth ??
+    mongoose.model("higherAuth", higherAuthSchema);
