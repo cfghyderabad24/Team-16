@@ -71,12 +71,12 @@ const Navbar = () => {
                                 Home
                             </Link>
                             {session?.user?.role && (
-                                <div
+                                <Link
                                     className="duration-300 cursor-pointer hover:text-blue-500"
-                                    onClick={router.push(`${link}`)}
+                                    href={`${link}`}
                                 >
                                     Dashboard
-                                </div>
+                                </Link>
                             )}
                         </div>
                     </div>

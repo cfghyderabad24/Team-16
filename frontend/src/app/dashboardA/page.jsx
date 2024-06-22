@@ -1,4 +1,5 @@
 "use client";
+import { CreateProjectForm } from "@/components/createProject";
 import { AdminRegistrationForm } from "@/components/userRegistrationAdmin";
 import React, { useState } from "react";
 
@@ -25,7 +26,11 @@ const page = () => {
                 <div className="w-full h-[0.1px] my-4 bg-zinc-800"></div>
             </div>
             <div className="flex-1 ">
-                {choosenpage === "Project" && <div>Add Project</div>}
+                {choosenpage === "Project" && (
+                    <div>
+                        <CreateProjectForm />
+                    </div>
+                )}
                 {choosenpage === "create user" && (
                     <div>
                         <AdminRegistrationForm />
