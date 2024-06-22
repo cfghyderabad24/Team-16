@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# email configuration
+EMAIL_HOST = 'smtp.gmail.com' 
+EMAIL_HOST_USER = 'kanagalasnehitha@gmail.com' 
+EMAIL_HOST_PASSWORD = 'kzmcforvgruyvtki' 
+EMAIL_PORT = 587 
+EMAIL_USE_TLS = True
 
 # Application definition
 
