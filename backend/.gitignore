@@ -1,0 +1,55 @@
+# Ignore virtual environment directories
+venv/
+*.venv
+
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore Django project-specific files
+*.log
+*.pot
+*.po
+*.mo
+*.csv
+*.pyd
+*.pyi
+*~
+
+# Ignore media files
+media/
+
+# Ignore static files
+static/
+
+# Ignore Django's local settings
+local_settings.py
+
+# Ignore SQLite databases
+*.db
+*.sqlite3
+
+# Ignore IDE-specific files
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.vscode/
+*.pydevproject
+*.tmproj
+*.tmpreference
+*.nfs*
+
+# Ignore OS-specific files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+#snehitha
+db.sqlite3
