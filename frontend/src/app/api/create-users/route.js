@@ -17,9 +17,12 @@ export const POST = async (request) => {
         name,
         password: hashedPassword,
         email,
-        state,
         role,
     };
+
+    if (state) {
+        newUser.state = state;
+    }
 
     if (region) {
         newUser.region = region;
@@ -31,6 +34,7 @@ export const POST = async (request) => {
                 console.log("Frontliner user created")
             );
         } else {
+            // console.log(newUser);
             await higherAuth
                 .create(newUser)
                 .then(() => console.log("HigherAuth user created"));
