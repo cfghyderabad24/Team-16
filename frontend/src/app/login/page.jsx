@@ -28,12 +28,12 @@ const LoginPage = () => {
             {!loading && (
                 <div className="flex flex-col items-center justify-center pt-24">
                     <LoginForm />
-                    <div className="my-3">
+                    {/* <div className="my-3">
                         Don't have an account?
                         <Link href="/register" className="mx-2 underline">
                             Register
                         </Link>
-                    </div>
+                    </div> */}
                 </div>
             )}
         </>

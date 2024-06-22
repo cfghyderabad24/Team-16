@@ -8,6 +8,16 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { cn } from "@/utils/cn";
 
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+
 const LoginForm = () => {
     const router = useRouter();
     const [error, setError] = useState("");
@@ -58,6 +68,33 @@ const LoginForm = () => {
                             placeholder="••••••••"
                             type="password"
                         />
+                    </LabelInputContainer>
+
+                    <LabelInputContainer className="mb-4">
+                        <Label>Role</Label>
+                        <Select>
+                            <SelectTrigger className="w-[180px]">
+                                <SelectValue placeholder="Select your value" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    <SelectLabel>Fruits</SelectLabel>
+                                    <SelectItem value="apple">Apple</SelectItem>
+                                    <SelectItem value="banana">
+                                        Banana
+                                    </SelectItem>
+                                    <SelectItem value="blueberry">
+                                        Blueberry
+                                    </SelectItem>
+                                    <SelectItem value="grapes">
+                                        Grapes
+                                    </SelectItem>
+                                    <SelectItem value="pineapple">
+                                        Pineapple
+                                    </SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
                     </LabelInputContainer>
 
                     <button
