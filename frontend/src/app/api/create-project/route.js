@@ -30,9 +30,10 @@ export const POST = async (request) => {
             });
         }
 
+        // console.log("person found");
         const tenureInMonths = tenure * 12;
         const cycleLength = Math.floor(tenureInMonths / noOfCycles);
-
+        const associatedFrontlineWorker = frontliner._id;
         const cycles = [];
         let currentDate = new Date(startDate);
 
@@ -63,6 +64,7 @@ export const POST = async (request) => {
             title,
             description,
             associatedNGO,
+            associatedFrontlineWorker,
             budget,
             state,
             region,
@@ -72,6 +74,9 @@ export const POST = async (request) => {
             noOfCycles,
             cycles,
         });
+        // console.log(cycles);
+
+        console.log(newProject);
 
         const project = await newProject.save();
         console.log("Project ");

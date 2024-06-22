@@ -1,5 +1,44 @@
 import mongoose, { Schema } from "mongoose";
 
+const cycleSchema = new Schema(
+    {
+        cycleMonths: {
+            type: String,
+            required: true,
+        },
+        visited: {
+            type: Boolean,
+            default: false,
+        },
+        visitedDate: {
+            type: Date,
+        },
+        uploaded: {
+            type: Boolean,
+            default: false,
+        },
+        uploadDate: {
+            type: Date,
+        },
+        levelAccepted: {
+            type: [Number],
+            required: true,
+        },
+        NGOuploaded: {
+            type: Boolean,
+            default: false,
+        },
+        NGOuploadDate: {
+            type: Date,
+        },
+        alhist: {
+            type: [Date],
+            default: [],
+        },
+    },
+    { _id: false }
+); // Disable _id for cycle subdocuments
+
 const projectSchema = new Schema({
     title: {
         type: String,
@@ -11,6 +50,10 @@ const projectSchema = new Schema({
     associatedNGO: {
         type: String,
         required: true,
+    },
+    associatedFrontlineWorker: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Frontliner",
     },
     budget: {
         type: Number,
@@ -40,43 +83,7 @@ const projectSchema = new Schema({
         type: Number,
         required: true,
     },
-    cycles: [
-        {
-            alhist:{
-                type: [Date],
-                default: null,
-            },
-            cycleMonths: {
-                type: String,
-                required: true,
-            },
-            visited: {
-                type: Boolean,
-                default: false,
-            },
-            visitedDate: {
-                type: Date,
-            },
-            uploaded: {
-                type: Boolean,
-                default: false,
-            },
-            uploadDate: {
-                type: Date,
-            },
-            levelAccepted: {
-                type: [Number],
-                required: true,
-            },
-            NGOuploaded: {
-                type: Boolean,
-                default: false,
-            },
-            NGOuploadDate: {
-                type: Date,
-            },
-        },
-    ],
+    cycles: [cycleSchema], // Use cycleSchema for cycles array
 });
 
 // Export the Project model

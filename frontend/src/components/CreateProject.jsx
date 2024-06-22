@@ -20,6 +20,8 @@ export const CreateProjectForm = () => {
             const associatedNGO = formData.get("associatedNGO");
             const budget = formData.get("budget");
             const levels = formData.get("levels");
+            const state = formData.get("state");
+            const region = formData.get("region");
             const startDate = formData.get("startDate");
             const tenure = formData.get("tenure");
             const noOfCycles = formData.get("noOfCycles");
@@ -37,6 +39,8 @@ export const CreateProjectForm = () => {
                     budget,
                     levels,
                     startDate,
+                    state,
+                    region,
                     tenure,
                     noOfCycles,
                     frontlinerEmail,
@@ -99,6 +103,24 @@ export const CreateProjectForm = () => {
                         name="levels"
                         placeholder="Number of Levels"
                         type="number"
+                    />
+                </LabelInputContainer>
+                <LabelInputContainer className="mb-4">
+                    <Label htmlFor="region">Region</Label>
+                    <Input
+                        id="region"
+                        name="region"
+                        placeholder="Region"
+                        type="text"
+                    />
+                </LabelInputContainer>
+                <LabelInputContainer className="mb-4">
+                    <Label htmlFor="state">State</Label>
+                    <Input
+                        id="state"
+                        name="state"
+                        placeholder="State"
+                        type="text"
                     />
                 </LabelInputContainer>
                 <LabelInputContainer className="mb-4">
