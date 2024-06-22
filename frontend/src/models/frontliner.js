@@ -27,13 +27,11 @@ const frontlinerSchema = new Schema({
                     visitAlerts: [{
                         type: mongoose.Schema.Types.ObjectId, ref: "alertModel"
                     }],
-                    visitDate: {
-                        type: Date
-                    },
+
                     uploaded:
-                    {
-                        type: Boolean
-                    },
+                        [{
+                            type: mongoose.Schema.Types.ObjectId, ref: "alertModel"
+                        }]
 
 
 

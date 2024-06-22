@@ -29,9 +29,9 @@ const higherAuthSchema = new Schema({
                         type: Date
                     },
                     uploaded:
-                    {
-                        type: Boolean
-                    },
+                        [{
+                            type: mongoose.Schema.Types.ObjectId, ref: "alertModel"
+                        }]
 
 
                 }
