@@ -63,9 +63,9 @@ const handler = NextAuth({
     session: {
         strategy: "jwt",
     },
-    pages: {
-        signIn: "/",
-    },
+    // pages: {
+    //     signIn: "/",
+    // },
     secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,
     providers: [
         CredentialsProvider({
