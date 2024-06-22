@@ -15,26 +15,27 @@ var = {
 # Dictionary mapping alert types to their respective subjects and messages
 ALERTS = {
     "visitremainder": {
-        "subject": "New Visit Alert",
-        "message": "You have a new visit alert. Please check your dashboard for more details. Deadline is in 60 days."
+        "subject": "Upcoming Visit Reminder",
+        "message": "Dear {name}, this is a reminder for your upcoming visit. Please check your dashboard for more details. The deadline is in 60 days."
     },
     "visit": {
-        "subject": "Reminder Alert",
-        "message": "This is a reminder alert for visit. Deadline is in 30 days."
+        "subject": "Scheduled Visit Notification",
+        "message": "Dear {name}, you have a scheduled visit coming up. Please review the details in your dashboard. The deadline is in 30 days."
     },
     "uploadremainder": {
-        "subject": "Warning Alert",
-        "message": "You have received a warning alert. Immediate attention is required."
+        "subject": "Document Upload Reminder",
+        "message": "Dear {name}, this is a reminder to upload the necessary documents. Immediate action is required to avoid any delays."
     },
     "upload": {
-        "subject": "Information Alert",
-        "message": "Here is some important information for you."
+        "subject": "Important Document Upload",
+        "message": "Dear {name}, please upload the necessary documents. Check your dashboard for more information and ensure timely submission."
     },
     "approve": {
-        "subject": "Notification Alert",
-        "message": "You have a new notification. Please review it."
+        "subject": "Approval Notification",
+        "message": "Dear {name}, you have a new approval notification. Please review and take the necessary action as soon as possible."
     }
 }
+
 
 def send_email(request):
     if request.method == "POST":
@@ -48,8 +49,9 @@ def send_email(request):
             return HttpResponse(f'Invalid alert type: {alert_type}')
 
         # Construct email parameters
-        subject = alert.get("subject", "Default Subject")
-        message = alert.get("message", "Default Message")
+        name = var.get("name", "name")
+        subject = alert.get("subject", "Default Subject").format(name=name)
+        message = alert.get("message", "Default Message").format(name=name)
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [var.get("email")]
 
