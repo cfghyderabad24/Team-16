@@ -14,7 +14,7 @@ const higherAuthSchema = new Schema({
         type: String,
     },
     state: {
-        required: true,
+        required: false,
         type: String,
     },
     region: {

@@ -16,6 +16,14 @@ const projectSchema = new Schema({
         type: Number,
         required: true,
     },
+    state: {
+        required: true,
+        type: String,
+    },
+    region: {
+        required: false,
+        type: String,
+    },
     levels: {
         type: Number,
         required: true,

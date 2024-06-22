@@ -14,15 +14,47 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { AlignJustify, LogOut } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
     const { data: session, status } = useSession();
     const [loading, setLoading] = useState(true);
+    const router = useRouter();
+
+    const [link, setLink] = useState("");
     useEffect(() => {
         if (status) {
             setLoading(false);
         }
     }, [status]);
+    useEffect(() => {
+        if (session?.user?.role) {
+            console.log(session.user.role);
+            switch (session.user.role) {
+                case "Frontliner":
+                    setLink("/dashboardF");
+                    break;
+                case "Admin":
+                    setLink("/dashboardA");
+                    break;
+                case "State Lead":
+                    setLink("/dashboardS");
+                    break;
+                case "General Manager":
+                    setLink("/dashboardG");
+                    break;
+                case "Regional Director":
+                    setLink("/dashboardR");
+                    break;
+                case "Head Office":
+                    setLink("/dashboardH");
+                    break;
+                default:
+                    setLink("/");
+                    break;
+            }
+        }
+    }, [session?.user?.role]);
     return (
         <>
             {!loading && (
@@ -38,18 +70,14 @@ const Navbar = () => {
                             >
                                 Home
                             </Link>
-                            <Link
-                                className="duration-300 hover:text-blue-500"
-                                href={"/"}
-                            >
-                                Link1
-                            </Link>
-                            <Link
-                                className="duration-300 hover:text-blue-500"
-                                href={"/"}
-                            >
-                                Link2
-                            </Link>
+                            {session?.user?.role && (
+                                <Link
+                                    className="duration-300 cursor-pointer hover:text-blue-500"
+                                    href={`${link}`}
+                                >
+                                    Dashboard
+                                </Link>
+                            )}
                         </div>
                     </div>
                     <div className="flex flex-row items-center gap-4 ">
@@ -71,9 +99,7 @@ const Navbar = () => {
                                     </DropdownMenuLabel>
                                     <DropdownMenuSeparator />
                                     <DropdownMenuItem>
-                                        <Link href={"/dashboard"}>
-                                            Dashboard
-                                        </Link>
+                                        <Link href={`${link}`}>Dashboard</Link>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem onClick={doLogout}>
                                         <LogOut className="w-4 h-4 mr-2" />
