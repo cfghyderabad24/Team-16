@@ -33,13 +33,36 @@ export default async function alertBE(req, res) {
                     if(diffInDays%30 == 0 && diffInDays/30 <3){
                         cycle.alhist.push(currentDate);
                         // add alert
+                        const newAlert = new Alert({
+                            title: "Visit Reminder",
+                            description: "Do make a visit to this project",
+                            projectId: p._id, 
+                            sentDate: currentDate,
+                            empType: "Frontliner", 
+                            empId: "Your employee ID", // Replace with the actual employee ID
+                            type: "Your alert type", // Replace with the actual alert type
+                          });
+                          newAlert.save();
                         console.log("alert made");
                     }else
                     console.log("not a good time to send alert");
+                    if(diffInDays == 15 && cycle.visited == true && cycle.uploaded == false){
+                        // upload alert
+                        const newAlert = new Alert({
+                            title: "Upload alert",
+                            description: "Do upload docs this project",
+                            projectId: p._id, 
+                            sentDate: currentDate,
+                            empType: "Frontliner", 
+                            empId: "Your employee ID", // Replace with the actual employee ID
+                            type: "Your alert type", // Replace with the actual alert type
+                          });
+                          newAlert.save();
+                    }
                 }
             });
         });
     } catch (error) {
-
+        console.log(err);
     }
 }
