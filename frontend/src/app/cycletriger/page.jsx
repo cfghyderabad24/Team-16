@@ -64,7 +64,7 @@ export default async function alertBE(req, res) {
                 sentDate: currentDate,
                 empType: "Frontliner",
                 empId: p.associatedFrontlineWorker, // Replace with the actual employee ID
-                type: "visit", // Replace with the actual alert type
+                type: "upload", // Replace with the actual alert type
               });
 
             await newAlert.save();
