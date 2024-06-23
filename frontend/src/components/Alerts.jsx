@@ -81,15 +81,15 @@ const FrontlinerAlerts = () => {
 
     return (
         <div className="w-full ">
-            <h1 className="mb-8 text-3xl ">Frontliner Alerts</h1>
+            <h1 className="mt-2 mb-4 text-3xl ">Frontliner Alerts</h1>
             <ul>
                 {alerts.map((alert) => (
                     <li
                         key={alert._id}
-                        className="px-4 py-4 mb-4 rounded-md shadow-lg alert-item bg-slate-400"
+                        className="flex flex-col gap-2 px-4 py-4 mb-4 rounded-md shadow-lg alert-item bg-slate-200 "
                     >
-                        <h3>{alert.title}</h3>
-                        <p>{alert.description}</p>
+                        <h3 className="text-2xl ">{alert.title}</h3>
+                        <p className="">{alert.description}</p>
                         <p>
                             Sent Date:{" "}
                             {new Date(alert.sentDate).toLocaleDateString()}

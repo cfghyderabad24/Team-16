@@ -2,6 +2,7 @@
 
 import FrontlinerAlerts from "@/components/Alerts";
 import FrontlinerProjects from "@/components/Project";
+import VisualizationPage from "@/components/Vis";
 import React, { useState } from "react";
 
 const page = () => {
@@ -48,12 +49,15 @@ const page = () => {
                     </li>
                 </ul>
             </div>
-            <div className="absolute w-3/5 ml-80 ">
+            <div className="absolute w-3/5 mt-2 ml-72 ">
                 {selected === "projects" && <FrontlinerProjects />}
             </div>
             <div className="absolute w-3/5 ml-80 ">
                 {selected === "alerts" && <FrontlinerAlerts />}
             </div>
+            {/* <div className="absolute w-3/5 ml-80 ">
+                {selected === "vis" && <VisualizationPage />}
+            </div> */}
         </div>
     );
 };
