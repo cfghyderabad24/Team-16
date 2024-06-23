@@ -25,7 +25,7 @@ const alertSchema = new Schema({
     empType: {
         type: String,
         required: true,
-        enum: ["Frontliner", "HigherEmp"], // Assuming 'User' and 'Admin' are the two possible schemas
+        enum: ["Frontliner", "higherAuth"], // Assuming 'User' and 'Admin' are the two possible schemas
     },
     empId: {
         type: Schema.Types.ObjectId,
@@ -40,6 +40,10 @@ const alertSchema = new Schema({
     currentAlertsCount: {
         type: Number,
         default: 0,
+    },
+    responded: {
+        type: Boolean,
+        default: false,
     },
 });
 

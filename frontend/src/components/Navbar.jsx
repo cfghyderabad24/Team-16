@@ -58,10 +58,10 @@ const Navbar = () => {
     return (
         <>
             {!loading && (
-                <div className=" z-50 fixed flex justify-between items-center w-screen h-20 px-4 border-b-[0.1px] border-opacity-25 border-slate-600 bg-white backdrop-blur-sm dark:bg-zinc-900 dark:bg-opacity-50 bg-opacity-75">
+                <div className=" z-50 fixed flex justify-between items-center w-screen h-20 px-4 border-b-[0.1px] border-opacity-25 border-slate-600 bg-white backdrop-blur-sm dark:bg-zinc-900 dark:bg-opacity-50 ">
                     <div className="flex flex-row items-center gap-4 font-medium dark:text-slate-300 text-slate-900 justify-normal">
-                        <div className="mr-4 text-3xl font-normal dark:font-thin">
-                            LOGO
+                        <div className="mr-4 text-3xl font-normal text-yellow-400 dark:font-thin">
+                            CRY
                         </div>
                         <div className="items-center hidden gap-4 md:flex ">
                             <Link
@@ -91,7 +91,7 @@ const Navbar = () => {
                             // </div>
                             <DropdownMenu>
                                 <DropdownMenuTrigger className="px-4 py-2 font-light text-white bg-blue-600 rounded-lg cursor-pointer hover:bg-blue-400">
-                                    Profile
+                                    {session.user.name}
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent className="dark:bg-zinc-800 bg-zinc-50">
                                     <DropdownMenuLabel>
